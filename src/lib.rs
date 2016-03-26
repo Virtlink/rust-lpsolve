@@ -36,6 +36,16 @@
 //!
 //! `lpsolve-sys` is versioned separately from this wrapper. This wrapper is provisionally
 //! unstable, but the functions that are currently wrapped are not likely to change.
+//!
+//! # License
+//! 
+//! This crate and `lpsolve-sys` are licensed under either of
+//! 
+//!  * Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+//!  * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+//! 
+//! at your option. However, please note that lpsolve itself is LGPL. The default configuration right
+//! now builds a bundled copy of lpsolve and links to it statically.
 
 
 extern crate lpsolve_sys as lp;
