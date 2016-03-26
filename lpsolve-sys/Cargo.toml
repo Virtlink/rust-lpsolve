@@ -9,6 +9,11 @@ license = "MIT OR Apache-2.0"
 documentation = "https://cmr.gitlab.com/rust-lpsolve/lpsolve-sys"
 repository = "https://gitlab.com/cmr/rust-lpsolve.git"
 homepage = "https://gitlab.com/cmr/rust-lpsolve"
+build = "build.rs"
+links = "lpsolve55"
 
 [dependencies]
 libc = "0.2"
+
+[build-dependencies]
+gcc = "0.3"
