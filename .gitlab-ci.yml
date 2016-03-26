@@ -1,0 +1,14 @@
+build:
+  script: "cargo test"
+  tags:
+    - rust
+pages:
+  script:
+    - cargo doc
+  artifacts:
+    paths:
+    - target/doc
+  only:
+  - master
+  tags:
+  - rust

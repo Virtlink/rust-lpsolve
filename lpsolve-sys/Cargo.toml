@@ -1,0 +1,14 @@
+[package]
+name = "lpsolve-sys"
+version = "5.5.0"
+authors = ["Corey Richardson <corey@octayn.net>"]
+description = "Raw lpsolve bindings"
+keywords = ["linear", "programming", "optimization", "bindings"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+documentation = "https://cmr.gitlab.com/rust-lpsolve/lpsolve-sys"
+repository = "https://gitlab.com/cmr/rust-lpsolve.git"
+homepage = "https://gitlab.com/cmr/rust-lpsolve"
+
+[dependencies]
+libc = "0.2"
