@@ -9,9 +9,10 @@ pages:
     - rm -rf target/doc/bitflags
     - rm -rf target/doc/src/libc
     - rm -rf target/doc/src/bitflags
+    - mv target/doc public
   artifacts:
     paths:
-    - target/doc
+    - public
   only:
   - master
   tags:
