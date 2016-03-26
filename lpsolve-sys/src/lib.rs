@@ -1844,7 +1844,6 @@ pub type write_modeldata_func =
         -> libc::c_int;
 
 #[cfg(not(windows))]
-#[link(name = "lpsolve55")]
 extern "C" {
     pub fn allocCHAR(lp: *mut lprec, ptr: *mut *mut libc::c_char,
                      size: libc::c_int,
@@ -3237,7 +3236,6 @@ extern "C" {
 }
 
 #[cfg(windows)]
-#[link(name = "lpsolve55")]
 extern "stdcall" {
     pub fn allocCHAR(lp: *mut lprec, ptr: *mut *mut libc::c_char,
                      size: libc::c_int,
