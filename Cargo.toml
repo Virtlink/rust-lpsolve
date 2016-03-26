@@ -11,6 +11,6 @@ repository = "https://gitlab.com/cmr/rust-lpsolve.git"
 homepage = "https://gitlab.com/cmr/rust-lpsolve"
 
 [dependencies]
-lpsolve-sys = { version = "5.5", path = "lpsolve-sys" }
+lpsolve-sys = version = "5.5"
 libc = "0.2"
 bitflags = "0.5"
