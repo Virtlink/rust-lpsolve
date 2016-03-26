@@ -5,6 +5,10 @@ build:
 pages:
   script:
     - cargo doc
+    - rm -rf target/doc/libc
+    - rm -rf target/doc/bitflags
+    - rm -rf target/doc/src/libc
+    - rm -rf target/doc/src/bitflags
   artifacts:
     paths:
     - target/doc
