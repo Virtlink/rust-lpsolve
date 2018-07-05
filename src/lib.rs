@@ -141,6 +141,7 @@ macro_rules! cptr {
     ($e:expr) => { if $e.is_null() { None } else { Some(Problem { lprec: $e }) } }
 }
 
+#[cfg(not(windows))]
 unsafe extern "C" fn write_modeldata(val: *mut libc::c_void, buf: *mut libc::c_char) -> libc::c_int {
     let val = transmute::<_, &mut &mut Write>(val);
     let buf = CStr::from_ptr(buf);
@@ -150,7 +151,18 @@ unsafe extern "C" fn write_modeldata(val: *mut libc::c_void, buf: *mut libc::c_c
     }
 }
 
+#[cfg(windows)]
+unsafe extern "stdcall" fn write_modeldata(val: *mut libc::c_void, buf: *mut libc::c_char) -> libc::c_int {
+    let val = transmute::<_, &mut &mut Write>(val);
+    let buf = CStr::from_ptr(buf);
+    match val.write(buf.to_bytes()) {
+        Ok(_) => 0,
+        Err(_) => 1,
+    }
+}
+
 impl Problem {
+
     /// Initialize an empty problem with space for `rows` and `cols`.
     pub fn new(rows: libc::c_int, cols: libc::c_int) -> Option<Problem> {
         let ptr = unsafe { lp::make_lp(rows, cols) };

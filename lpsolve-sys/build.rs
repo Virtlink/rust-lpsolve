@@ -1,6 +1,9 @@
 extern crate gcc;
+
+use std::env;
+
 fn main() {
-    let mut cfg = gcc::Config::new();
+    let mut cfg = gcc::Build::new();
     cfg.include("lp_solve_5.5")
        .include("lp_solve_5.5/bfp")
        .include("lp_solve_5.5/bfp/bfp_LUSOL")
@@ -8,7 +11,7 @@ fn main() {
        .include("lp_solve_5.5/colamd")
        .include("lp_solve_5.5/shared")
        .opt_level(3)
-       //.define("NOISNAN", None)
+       .define("NOISNAN", None)
        .define("INVERSE_ACTIVE", Some("INVERSE_LUSOL"))
        .define("RoleIsExternalInvEngine", None)
        .define("YY_NEVER_INTERACTIVE", None)
@@ -40,6 +43,17 @@ fn main() {
        .file("lp_solve_5.5/lp_SOS.c")
        .file("lp_solve_5.5/lp_utils.c")
        .file("lp_solve_5.5/yacc_read.c");
+
+    let target_os = env::var("CARGO_CFG_TARGET_OS");
+    match target_os.as_ref().map(|x| &**x) {
+//        Ok("linux") | Ok("android") => {}
+//        Ok("freebsd") | Ok("dragonfly") => {}
+//        Ok("openbsd") | Ok("bitrig") | Ok("netbsd") | Ok("macos") | Ok("ios") => {
+        Ok("windows") => {
+            cfg.define("WIN32", None);
+        }
+        tos => panic!("unknown target os {:?}!", tos)
+    }
 
     if !std::env::var("TARGET").unwrap().contains("msvc") {
         cfg.flag("-lm");

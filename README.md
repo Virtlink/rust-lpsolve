@@ -6,6 +6,8 @@ Wrapper for lpsolve
 Please see the [documentation](https://cmr.gitlab.io/rust-lpsolve/lpsolve) for
 more information.
 
+Forked from original version by [Corey Richardson](https://gitlab.com/cmr/rust-lpsolve).
+
 # License
 
 This crate and `lpsolve-sys` are licensed under either of
@@ -22,3 +24,4 @@ Unless you explicitly state otherwise, any contribution intentionally
 submitted for inclusion in the work by you, as defined in the Apache-2.0
 license, shall be dual licensed as above, without any additional terms or
 conditions.
+
