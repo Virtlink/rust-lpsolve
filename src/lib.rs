@@ -60,6 +60,7 @@ use std::ops::Deref;
 #[repr(C)]
 #[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Hash)]
 pub enum Verbosity {
+    Neutral = 0,
     Critical = 1,
     Severe = 2,
     Important = 3,
@@ -261,6 +262,25 @@ impl Problem {
         1 == unsafe { lp::get_row(self.lprec, row, values.as_mut_ptr()) }
     }
 
+    /// Sets the verbosity of the output.
+    pub fn set_verbose(&mut self, verbosity: Verbosity) {
+        unsafe { lp::set_verbose(self.lprec, verbosity as libc::c_int) }
+    }
+
+    /// Sets the objective to maximize R0.
+    pub fn set_maxim(&mut self) {
+        unsafe { lp::set_maxim(self.lprec) }
+    }
+
+    /// Sets the objective to minimize R0.
+    pub fn set_minim(&mut self) {
+        unsafe { lp::set_minim(self.lprec) }
+    }
+
+    /// Gets the value of the objective function.
+    pub fn get_objective(&self) -> f64 {
+        unsafe { lp::get_objective(self.lprec) }
+    }
 
     /// Add a constraint to the model.
     /// 
