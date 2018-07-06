@@ -46,9 +46,10 @@ fn main() {
 
     let target_os = env::var("CARGO_CFG_TARGET_OS");
     match target_os.as_ref().map(|x| &**x) {
-//        Ok("linux") | Ok("android") => {}
-//        Ok("freebsd") | Ok("dragonfly") => {}
-//        Ok("openbsd") | Ok("bitrig") | Ok("netbsd") | Ok("macos") | Ok("ios") => {
+        Ok("linux") | Ok("freebsd") | Ok("openbsd") | Ok("netbsd") => {}
+        Ok("android") => {}
+        Ok("macos") => {}
+        Ok("ios") => {}
         Ok("windows") => {
             cfg.define("WIN32", None);
         }
